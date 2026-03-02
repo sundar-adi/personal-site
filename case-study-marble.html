@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marble Case Study — Adi Sundar</title>
+  <meta name="description" content="How I built the first-ever digital wallet and loyalty platform for insurance as CTO of Marble, from concept to 100K+ members to acquisition by The Zebra.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav nav--scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">Adi Sundar</a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#work">Case Studies</a></li>
+        <li><a href="/#experience">Experience</a></li>
+        <li><a href="/#advisory">Advisory</a></li>
+        <li><a href="mailto:adi.sundar13@gmail.com" class="btn btn--primary btn--sm">Get in Touch</a></li>
+        <button class="nav__close" id="navClose">&times;</button>
+      </ul>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== CASE STUDY HERO ===== -->
+  <section class="cs-hero">
+    <div class="container">
+      <a href="/" class="cs-hero__back">← Back to Home</a>
+      <div class="cs-hero__meta">
+        <span class="cs-hero__tag">FinTech</span>
+        <span class="cs-hero__tag">Insurance</span>
+        <span class="cs-hero__tag">Acquired</span>
+      </div>
+      <h1>Marble: The First Digital Wallet for Insurance</h1>
+      <p class="cs-hero__subtitle">How I built an insurance platform from concept to 100K+ members to acquisition — revolutionizing how consumers and carriers interact.</p>
+      <div class="cs-hero__image">
+        <img src="images/marble-hero.webp" alt="Marble app showing digital insurance wallet with policy cards and rewards" loading="eager">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== METRICS BAR ===== -->
+  <section class="cs-metrics">
+    <div class="container">
+      <div class="cs-metrics__grid">
+        <div>
+          <div class="cs-metric__value">100K+</div>
+          <div class="cs-metric__label">Members</div>
+        </div>
+        <div>
+          <div class="cs-metric__value">$100M+</div>
+          <div class="cs-metric__label">Lifetime Synced Premium</div>
+        </div>
+        <div>
+          <div class="cs-metric__value">60%+</div>
+          <div class="cs-metric__label">Monthly Active Retention</div>
+        </div>
+        <div>
+          <div class="cs-metric__value">5★</div>
+          <div class="cs-metric__label">App Store Rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE STUDY BODY ===== -->
+  <section class="cs-body">
+    <div class="container">
+      <div class="cs-body__content">
+
+        <h2>The Vision</h2>
+        <p>Insurance is one of the most fragmented, confusing, and opaque industries for consumers. People juggle multiple policies across different carriers, lose track of renewal dates, and have no idea if they're getting a good deal. There was no single place to organize, understand, and optimize your insurance — until Marble.</p>
+        <p>Stuart Winchester and I co-founded Marble in 2020 with a bold thesis: we could build the "Mint for insurance" — a digital wallet where consumers could see all their policies in one place, earn rewards for being responsible, and get smarter about their coverage over time.</p>
+
+        <h2>Building in Three Phases</h2>
+
+        <h3>Phase 1 — The Universal Hub</h3>
+        <p>The first challenge was deceptively simple: build a consumer hub that could organize all of a user's insurance policies in one place, regardless of carrier, and reward them for it. Think of it as "Mint for insurance" — a single dashboard for your auto, home, renters, pet, life, health, dental, and vision policies.</p>
+        <p>We built deep integrations using Canopy API and Sensible API (ML-powered document parsing) to automatically sync policy data from any carrier. The frontend was React with TypeScript and Apollo GraphQL, backed by Django with Python and Graphene on the server side. This architecture gave us the flexibility to move fast while maintaining data integrity across hundreds of insurance carriers.</p>
+      </div>
+
+      <div class="cs-body__wide-image fade-up">
+        <img src="images/marble-dashboard.webp" alt="Marble web and mobile dashboard showing rewards, policy cards, and renewal alerts">
+      </div>
+
+      <div class="cs-body__content">
+        <h3>Phase 2 — Consumer Engagement & Retention</h3>
+        <p>Once we had users organizing their policies, the next challenge was keeping them engaged across multiple policy cycles. Insurance isn't something people think about every day — but we needed them to.</p>
+        <p>We built a comprehensive retention toolkit: a rewards and loyalty program, smart notifications for renewal windows, educational content about coverage gaps, and engagement tools that kept users coming back. The result was a 60%+ monthly active user retention rate — extraordinary for an insurance product.</p>
+
+        <div class="cs-body__quote">
+          <p>"The Z1 team has been incredibly supportive through the different projects I have worked with them on. I knew from day one of Marble that I wanted Z1 onboard."</p>
+          <cite>— Adi Sundar, CTO of Marble</cite>
+        </div>
+
+        <h3>Phase 3 — Insurance Sales & Acquisition</h3>
+        <p>The final piece of the puzzle: monetization through insurance sales. Because we had rich data on what users were paying, when their policies renewed, and where they had coverage gaps, we could surface the right insurance product at the perfect moment — the renewal window.</p>
+        <p>This data-driven approach to insurance distribution is what ultimately attracted The Zebra. In July 2024, they acquired Marble, and I transitioned to VP of Engineering to lead the integration of our technology stack into their consumer platform serving millions of users.</p>
+      </div>
+
+      <div class="cs-body__wide-image fade-up">
+        <img src="images/marble-mobile-web.webp" alt="Marble mobile and web onboarding experience side by side">
+      </div>
+
+      <div class="cs-body__content">
+        <h2>Technical Architecture</h2>
+        <p>Building Marble required solving complex technical problems around insurance data aggregation, real-time policy syncing, and cross-carrier interoperability. Here's the stack we built:</p>
+
+        <div class="cs-body__features">
+          <div class="cs-feature">
+            <div class="cs-feature__name">Frontend</div>
+            <div class="cs-feature__desc">React + TypeScript with Apollo GraphQL for type-safe, real-time data flow</div>
+          </div>
+          <div class="cs-feature">
+            <div class="cs-feature__name">Backend</div>
+            <div class="cs-feature__desc">Django (Python) with Graphene GraphQL for flexible API architecture</div>
+          </div>
+          <div class="cs-feature">
+            <div class="cs-feature__name">Mobile</div>
+            <div class="cs-feature__desc">React Native — built ~18 months in, launching the 5-star rated app</div>
+          </div>
+          <div class="cs-feature">
+            <div class="cs-feature__name">Data Layer</div>
+            <div class="cs-feature__desc">Canopy API + Sensible API (ML-powered) for carrier data aggregation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-body__wide-image fade-up">
+        <img src="images/marble-architecture.webp" alt="Marble technical architecture diagram showing system components and data flow">
+      </div>
+
+      <div class="cs-body__content">
+        <h2>The Team</h2>
+        <p>Marble grew to a team of 12 at acquisition. Stuart Winchester led the business — marketing, operations, and agency partnerships. I led product and engineering, working closely with Z1 Digital as our design and development partner for strategy, branding, and product design.</p>
+
+        <div class="cs-body__quote">
+          <p>"I was able to confidently deputize Z1 to take a snapshot of the existing web app and create a mobile app with very little distraction... something I have never seen done so well by an external team."</p>
+          <cite>— Adi Sundar, CTO of Marble</cite>
+        </div>
+
+        <h2>The Outcome</h2>
+        <p>Over four years, we built industry-leading tools that helped members save money on their insurance while helping carriers retain customers. Marble was acquired by The Zebra in July 2024, validating the thesis that a consumer-first, data-rich approach to insurance could create massive value.</p>
+
+        <h3>Media Coverage</h3>
+        <div class="cs-media-links">
+          <a href="https://finance.yahoo.com/news/zebra-announces-strategic-acquisition-insurance-130000191.html" target="_blank" rel="noopener" class="cs-media-link">
+            <div>
+              <div class="cs-media-link__source">Yahoo Finance</div>
+              <div class="cs-media-link__title">The Zebra Announces Strategic Acquisition of Insurance Technology Platform</div>
+            </div>
+          </a>
+          <a href="https://www.fintechfutures.com/press-releases/marble-launches-first-rewards-based-mobile-app-for-insurance/" target="_blank" rel="noopener" class="cs-media-link">
+            <div>
+              <div class="cs-media-link__source">FinTech Futures</div>
+              <div class="cs-media-link__title">Marble Launches First Rewards-Based Mobile App for Insurance</div>
+            </div>
+          </a>
+        </div>
+
+        <div style="margin-top: var(--space-2xl); text-align: center;">
+          <a href="/" class="btn btn--primary btn--lg">← Back to Home</a>
+          <a href="case-study-loftsmart.html" class="btn btn--outline btn--lg" style="margin-left: 1rem;">Next: LoftSmart →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <p class="footer__copy">&copy; 2026 Adi Sundar. All rights reserved.</p>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/in/adi-sundar-23969355/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://twitter.com/adisundar_" target="_blank" rel="noopener" aria-label="X / Twitter">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="mailto:adi.sundar13@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

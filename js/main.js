@@ -1,0 +1,108 @@
+/* ============================================
+   ADI SUNDAR — PERSONAL WEBSITE
+   JavaScript: Scroll Animations, Nav, Smooth UX
+   ============================================ */
+
+// --- Navbar scroll effect ---
+const nav = document.getElementById('nav');
+
+function handleNavScroll() {
+  if (window.scrollY > 80) {
+    nav.classList.add('nav--scrolled');
+  } else {
+    // Only remove on pages with hero (index)
+    if (document.querySelector('.hero')) {
+      nav.classList.remove('nav--scrolled');
+    }
+  }
+}
+
+window.addEventListener('scroll', handleNavScroll, { passive: true });
+handleNavScroll(); // Run on load
+
+// --- Mobile nav toggle ---
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+const navClose = document.getElementById('navClose');
+
+if (navToggle) {
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+}
+
+if (navClose) {
+  navClose.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+}
+
+// Close mobile nav on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+// --- Scroll-triggered fade-up animations ---
+const fadeElements = document.querySelectorAll('.fade-up');
+
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      fadeObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+});
+
+fadeElements.forEach(el => fadeObserver.observe(el));
+
+// --- Smooth scroll for anchor links ---
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      const navHeight = nav.offsetHeight;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// --- Active nav link highlight ---
+const sections = document.querySelectorAll('section[id]');
+
+function highlightNav() {
+  const scrollY = window.scrollY + 100;
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const sectionId = section.getAttribute('id');
+    const navLink = document.querySelector(`.nav__links a[href="#${sectionId}"]`);
+
+    if (navLink) {
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLink.style.opacity = '1';
+      } else {
+        navLink.style.opacity = '';
+      }
+    }
+  });
+}
+
+window.addEventListener('scroll', highlightNav, { passive: true });
