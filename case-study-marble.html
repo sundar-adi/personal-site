@@ -10,19 +10,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* --- Hero image constrained --- */
-    .cs-hero__image--constrained {
-      margin-top: var(--space-xl);
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
+    /* --- Hero split layout: text left, image right --- */
+    .cs-hero__split {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2xl);
+      margin-top: var(--space-lg);
+    }
+    .cs-hero__text {
+      flex: 1 1 55%;
+      min-width: 0;
+    }
+    .cs-hero__text h1 {
+      margin-bottom: var(--space-md);
+    }
+    .cs-hero__image--side {
+      flex: 0 0 320px;
+      max-width: 320px;
       border-radius: var(--radius-xl);
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
     }
-    .cs-hero__image--constrained img {
+    .cs-hero__image--side img {
       width: 100%;
       display: block;
+    }
+    @media (max-width: 768px) {
+      .cs-hero__split {
+        flex-direction: column;
+        gap: var(--space-lg);
+      }
+      .cs-hero__image--side {
+        flex: none;
+        max-width: 260px;
+        margin: 0 auto;
+      }
     }
 
     /* --- Team spotlight section --- */
@@ -216,15 +238,19 @@
   <section class="cs-hero">
     <div class="container">
       <a href="/" class="cs-hero__back">← Back to Home</a>
-      <div class="cs-hero__meta">
-        <span class="cs-hero__tag">FinTech</span>
-        <span class="cs-hero__tag">Insurance</span>
-        <span class="cs-hero__tag">Acquired</span>
-      </div>
-      <h1>Marble: The First Digital Wallet for Insurance</h1>
-      <p class="cs-hero__subtitle">How I built an insurance platform from concept to 100K+ members to acquisition — revolutionizing how consumers and carriers interact.</p>
-      <div class="cs-hero__image--constrained">
-        <img src="images/marble-wallet-hero.png" alt="Marble insurance wallet app showing policy cards, balance, and 4.9 star App Store rating" loading="eager">
+      <div class="cs-hero__split">
+        <div class="cs-hero__text">
+          <div class="cs-hero__meta">
+            <span class="cs-hero__tag">FinTech</span>
+            <span class="cs-hero__tag">Insurance</span>
+            <span class="cs-hero__tag">Acquired</span>
+          </div>
+          <h1>Marble: The First Digital Wallet for Insurance</h1>
+          <p class="cs-hero__subtitle">How I built an insurance platform from concept to 100K+ members to acquisition — revolutionizing how consumers and carriers interact.</p>
+        </div>
+        <div class="cs-hero__image--side">
+          <img src="images/marble-wallet-hero.png" alt="Marble insurance wallet app showing policy cards, balance, and 4.9 star App Store rating" loading="eager">
+        </div>
       </div>
     </div>
   </section>
