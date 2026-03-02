@@ -9,6 +9,188 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- Hero image constrained --- */
+    .cs-hero__image--constrained {
+      margin-top: var(--space-xl);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+    }
+    .cs-hero__image--constrained img {
+      width: 100%;
+      display: block;
+    }
+
+    /* --- Team spotlight section --- */
+    .cs-team-spotlight {
+      max-width: var(--max-width-narrow);
+      margin: var(--space-2xl) auto;
+    }
+    .cs-team-spotlight__card {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--color-white);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--color-gray-200);
+    }
+    .cs-team-spotlight__img {
+      width: 100%;
+      display: block;
+    }
+    .cs-team-spotlight__copy {
+      padding: var(--space-lg) var(--space-xl);
+    }
+    .cs-team-spotlight__headline {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .cs-team-spotlight__text {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--color-gray-600);
+      margin: 0;
+    }
+
+    /* --- Product carousel --- */
+    .cs-carousel {
+      max-width: var(--max-width);
+      margin: var(--space-3xl) auto;
+    }
+    .cs-carousel__label {
+      text-align: center;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-xs);
+    }
+    .cs-carousel__title {
+      text-align: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+      color: var(--color-primary);
+      margin-bottom: var(--space-xl);
+    }
+    .cs-carousel__viewport {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+    }
+    .cs-carousel__track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+    .cs-carousel__slide {
+      flex: 0 0 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-lg);
+      padding: 0 var(--space-lg);
+      box-sizing: border-box;
+    }
+    .cs-carousel__slide img {
+      max-height: 520px;
+      width: auto;
+      max-width: 45%;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+      object-fit: contain;
+    }
+
+    /* Navigation arrows */
+    .cs-carousel__nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: var(--color-white);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .cs-carousel__nav:hover {
+      background: var(--color-gray-50);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+      transform: translateY(-50%) scale(1.05);
+    }
+    .cs-carousel__nav--prev { left: 16px; }
+    .cs-carousel__nav--next { right: 16px; }
+    .cs-carousel__nav svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: var(--color-primary);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Dots */
+    .cs-carousel__dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: var(--space-md);
+    }
+    .cs-carousel__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: var(--color-gray-300);
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cs-carousel__dot--active {
+      background: var(--color-accent);
+      transform: scale(1.25);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .cs-hero__image--constrained {
+        max-width: 320px;
+      }
+      .cs-carousel__slide {
+        flex-direction: column;
+        gap: var(--space-sm);
+        padding: 0 var(--space-sm);
+      }
+      .cs-carousel__slide img {
+        max-width: 80%;
+        max-height: 360px;
+      }
+      .cs-carousel__nav {
+        width: 40px;
+        height: 40px;
+      }
+      .cs-carousel__nav--prev { left: 8px; }
+      .cs-carousel__nav--next { right: 8px; }
+      .cs-team-spotlight__copy {
+        padding: var(--space-md) var(--space-lg);
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -41,7 +223,7 @@
       </div>
       <h1>Marble: The First Digital Wallet for Insurance</h1>
       <p class="cs-hero__subtitle">How I built an insurance platform from concept to 100K+ members to acquisition — revolutionizing how consumers and carriers interact.</p>
-      <div class="cs-hero__image">
+      <div class="cs-hero__image--constrained">
         <img src="images/marble-wallet-hero.png" alt="Marble insurance wallet app showing policy cards, balance, and 4.9 star App Store rating" loading="eager">
       </div>
     </div>
@@ -79,19 +261,26 @@
         <h2>The Vision</h2>
         <p>Insurance is one of the most fragmented, confusing, and opaque industries for consumers. People juggle multiple policies across different carriers, lose track of renewal dates, and have no idea if they're getting a good deal. There was no single place to organize, understand, and optimize your insurance — until Marble.</p>
         <p>Stuart Winchester and I co-founded Marble in 2020 with a bold thesis: we could build the "Mint for insurance" — a digital wallet where consumers could see all their policies in one place, earn rewards for being responsible, and get smarter about their coverage over time.</p>
+      </div>
 
+      <!-- ===== TEAM SPOTLIGHT (right after Vision) ===== -->
+      <div class="cs-team-spotlight fade-up">
+        <div class="cs-team-spotlight__card">
+          <img class="cs-team-spotlight__img" src="images/marble-team.jpg" alt="The Marble team — from 2 to 14 in 4 years">
+          <div class="cs-team-spotlight__copy">
+            <div class="cs-team-spotlight__headline">From 2 to 14 in 4 years.</div>
+            <p class="cs-team-spotlight__text">Our lean team was built to build rapidly. We proudly had 0 people quit Marble. A culture of trust and accountability from day 1.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-body__content">
         <h2>Building in Three Phases</h2>
 
         <h3>Phase 1 — The Universal Hub</h3>
         <p>The first challenge was deceptively simple: build a consumer hub that could organize all of a user's insurance policies in one place, regardless of carrier, and reward them for it. Think of it as "Mint for insurance" — a single dashboard for your auto, home, renters, pet, life, health, dental, and vision policies.</p>
         <p>We built deep integrations using Canopy API and Sensible API (ML-powered document parsing) to automatically sync policy data from any carrier. The frontend was React with TypeScript and Apollo GraphQL, backed by Django with Python and Graphene on the server side. This architecture gave us the flexibility to move fast while maintaining data integrity across hundreds of insurance carriers.</p>
-      </div>
 
-      <div class="cs-body__wide-image fade-up">
-        <img src="images/marble-organize.png" alt="Marble app carrier selection screen — add any insurance policy from Allstate, Geico, State Farm, and more">
-      </div>
-
-      <div class="cs-body__content">
         <h3>Phase 2 — Consumer Engagement & Retention</h3>
         <p>Once we had users organizing their policies, the next challenge was keeping them engaged across multiple policy cycles. Insurance isn't something people think about every day — but we needed them to.</p>
         <p>We built a comprehensive retention toolkit: a rewards and loyalty program, smart notifications for renewal windows, educational content about coverage gaps, and engagement tools that kept users coming back. The result was a 60%+ monthly active user retention rate — extraordinary for an insurance product.</p>
@@ -101,8 +290,34 @@
         <p>This data-driven approach to insurance distribution is what ultimately attracted The Zebra. In July 2024, they acquired Marble, and I transitioned to VP of Engineering to lead the integration of our technology stack into their consumer platform serving millions of users.</p>
       </div>
 
-      <div class="cs-body__wide-image fade-up">
-        <img src="images/marble-control.png" alt="Marble policy details view showing coverage info, documents, and direct carrier contact">
+      <!-- ===== PRODUCT SCREENSHOT CAROUSEL ===== -->
+      <div class="cs-carousel fade-up">
+        <div class="cs-carousel__label">Product</div>
+        <div class="cs-carousel__title">The App Experience</div>
+        <div class="cs-carousel__viewport" id="carouselViewport">
+          <div class="cs-carousel__track" id="carouselTrack">
+            <!-- Slide 1: Organize + Control -->
+            <div class="cs-carousel__slide">
+              <img src="images/marble-organize.png" alt="Organize All Insurance — add any policy from any carrier">
+              <img src="images/marble-control.png" alt="Take Control — full policy details at your fingertips">
+            </div>
+            <!-- Slide 2: Save + Rewards -->
+            <div class="cs-carousel__slide">
+              <img src="images/marble-save.png" alt="Save Money — compare carriers with Marble Scores">
+              <img src="images/marble-rewards.png" alt="Earn Rewards — points for every policy you add">
+            </div>
+          </div>
+          <button class="cs-carousel__nav cs-carousel__nav--prev" id="carouselPrev" aria-label="Previous slide">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button class="cs-carousel__nav cs-carousel__nav--next" id="carouselNext" aria-label="Next slide">
+            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"></polyline></svg>
+          </button>
+        </div>
+        <div class="cs-carousel__dots" id="carouselDots">
+          <button class="cs-carousel__dot cs-carousel__dot--active" data-slide="0" aria-label="Slide 1"></button>
+          <button class="cs-carousel__dot" data-slide="1" aria-label="Slide 2"></button>
+        </div>
       </div>
 
       <div class="cs-body__content">
@@ -110,13 +325,7 @@
           <p>"The Z1 team has been incredibly supportive through the different projects I have worked with them on. I knew from day one of Marble that I wanted Z1 onboard."</p>
           <cite>— Adi Sundar, CTO of Marble</cite>
         </div>
-      </div>
 
-      <div class="cs-body__wide-image fade-up">
-        <img src="images/marble-rewards.png" alt="Marble rewards system — earn points for adding policies, refer friends for bonus rewards">
-      </div>
-
-      <div class="cs-body__content">
         <h2>Technical Architecture</h2>
         <p>Building Marble required solving complex technical problems around insurance data aggregation, real-time policy syncing, and cross-carrier interoperability. Here's the stack we built:</p>
 
@@ -138,22 +347,6 @@
             <div class="cs-feature__desc">Canopy API + Sensible API (ML-powered) for carrier data aggregation</div>
           </div>
         </div>
-      </div>
-
-      <div class="cs-body__wide-image fade-up">
-        <img src="images/marble-save.png" alt="Marble Insurance Insider — compare carriers side by side with Marble Scores for claims, satisfaction, and price">
-      </div>
-
-      <div class="cs-body__content">
-        <h2>The Team</h2>
-        <p>Marble grew to a team of 12 at acquisition. Stuart Winchester led the business — marketing, operations, and agency partnerships. I led product and engineering, working closely with Z1 Digital as our design and development partner for strategy, branding, and product design.</p>
-      </div>
-
-      <div class="cs-body__wide-image fade-up">
-        <img src="images/marble-team.jpg" alt="The Marble team — engineers, designers, and operators who built the insurance wallet">
-      </div>
-
-      <div class="cs-body__content">
 
         <div class="cs-body__quote">
           <p>"I was able to confidently deputize Z1 to take a snapshot of the existing web app and create a mobile app with very little distraction... something I have never seen done so well by an external team."</p>
@@ -208,5 +401,47 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    /* ===== Product Carousel ===== */
+    (function() {
+      const track = document.getElementById('carouselTrack');
+      const dots = document.querySelectorAll('.cs-carousel__dot');
+      const prevBtn = document.getElementById('carouselPrev');
+      const nextBtn = document.getElementById('carouselNext');
+      const totalSlides = dots.length;
+      let current = 0;
+      let startX = 0;
+      let isDragging = false;
+
+      function goTo(index) {
+        current = (index + totalSlides) % totalSlides;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function(d, i) {
+          d.classList.toggle('cs-carousel__dot--active', i === current);
+        });
+      }
+
+      prevBtn.addEventListener('click', function() { goTo(current - 1); });
+      nextBtn.addEventListener('click', function() { goTo(current + 1); });
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() { goTo(parseInt(dot.dataset.slide)); });
+      });
+
+      /* Touch / swipe support */
+      var viewport = document.getElementById('carouselViewport');
+      viewport.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+      viewport.addEventListener('touchend', function(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) { goTo(diff > 0 ? current + 1 : current - 1); }
+      }, { passive: true });
+
+      /* Auto-advance every 5s, pause on hover */
+      var timer = setInterval(function() { goTo(current + 1); }, 5000);
+      viewport.addEventListener('mouseenter', function() { clearInterval(timer); });
+      viewport.addEventListener('mouseleave', function() { timer = setInterval(function() { goTo(current + 1); }, 5000); });
+    })();
+  </script>
 </body>
 </html>
