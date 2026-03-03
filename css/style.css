@@ -1379,6 +1379,127 @@ p {
   transform: translateY(0);
 }
 
+/* =============================================
+   HERO STAGGERED ENTRANCE ANIMATION
+   Cinematic load: elements cascade in with
+   different timing, easing, and motion paths
+   ============================================= */
+
+/* Initial hidden state for all animated hero elements */
+.hero__title,
+.hero__description,
+.hero__ctas,
+.hero .hero-stats,
+.hero__social,
+.hero__image {
+  opacity: 0;
+}
+
+/* Title: slides up with a spring-like overshoot */
+.hero__title {
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Description: gentle fade up */
+.hero__description {
+  transform: translateY(25px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* CTA buttons: slide up */
+.hero__ctas {
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Stat pills: each one pops in individually via JS delay */
+.hero .hero-stats {
+  transform: translateY(15px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero .hero-stat {
+  opacity: 0;
+  transform: scale(0.85) translateY(10px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Social links: fade in */
+.hero__social {
+  transform: translateY(10px);
+  transition: opacity 0.5s ease,
+              transform 0.5s ease;
+}
+
+/* Hero image: scales up from slightly smaller with a soft fade */
+.hero__image {
+  transform: scale(0.92) translateY(20px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Revealed states (added by JS) --- */
+.hero--loaded .hero__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero--loaded .hero__description {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.15s;
+}
+
+.hero--loaded .hero__ctas {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
+.hero--loaded .hero-stats {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.45s;
+}
+
+.hero.hero--loaded .hero-stat.hero-stat--visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.hero--loaded .hero__social {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+
+.hero--loaded .hero__image {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition-delay: 0.2s;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero__title,
+  .hero__description,
+  .hero__ctas,
+  .hero .hero-stats,
+  .hero .hero-stat,
+  .hero__social,
+  .hero__image {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* --- Team Spotlight --- */
 .cs-team-spotlight {
   max-width: var(--max-width-narrow);

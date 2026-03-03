@@ -107,6 +107,28 @@ function highlightNav() {
 
 window.addEventListener('scroll', highlightNav, { passive: true });
 
+// --- Staggered hero entrance animation ---
+(function() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  // Small delay to let the browser paint the initial hidden state,
+  // then trigger the cascade by adding the loaded class
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      hero.classList.add('hero--loaded');
+
+      // Stagger each stat pill individually for a popcorn effect
+      const stats = hero.querySelectorAll('.hero-stat');
+      stats.forEach((stat, i) => {
+        setTimeout(() => {
+          stat.classList.add('hero-stat--visible');
+        }, 500 + i * 100); // starts at 500ms, each pill 100ms apart
+      });
+    });
+  });
+})();
+
 // --- Rotating hero words ---
 (function() {
   const words = document.querySelectorAll('.rotating-word');
