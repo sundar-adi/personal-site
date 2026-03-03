@@ -9,154 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* --- Hero split layout: text left, image right --- */
-    .cs-hero__split {
-      display: flex;
-      align-items: center;
-      gap: var(--space-2xl);
-      margin-top: var(--space-lg);
-    }
-    .cs-hero__text {
-      flex: 1 1 55%;
-      min-width: 0;
-    }
-    .cs-hero__text h1 {
-      margin-bottom: var(--space-md);
-    }
-    .cs-hero__image--side {
-      flex: 0 0 320px;
-      max-width: 320px;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-    }
-    .cs-hero__image--side img {
-      width: 100%;
-      display: block;
-    }
-    @media (max-width: 768px) {
-      .cs-hero__split {
-        flex-direction: column;
-        gap: var(--space-lg);
-      }
-      .cs-hero__image--side {
-        flex: none;
-        max-width: 260px;
-        margin: 0 auto;
-      }
-    }
-
-    /* --- Team spotlight section --- */
-    .cs-team-spotlight {
-      max-width: var(--max-width-narrow);
-      margin: var(--space-2xl) auto;
-    }
-    .cs-team-spotlight__card {
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      background: var(--color-white);
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
-      border: 1px solid var(--color-gray-200);
-    }
-    .cs-team-spotlight__img {
-      width: 100%;
-      display: block;
-    }
-    .cs-team-spotlight__copy {
-      padding: var(--space-lg) var(--space-xl);
-    }
-    .cs-team-spotlight__headline {
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--color-primary);
-      margin-bottom: 0.5rem;
-    }
-    .cs-team-spotlight__text {
-      font-size: 0.95rem;
-      line-height: 1.65;
-      color: var(--color-gray-600);
-      margin: 0;
-    }
-
-    /* --- Product gallery --- */
-    .cs-gallery {
-      max-width: var(--max-width);
-      margin: var(--space-3xl) auto;
-    }
-    .cs-gallery__label {
-      text-align: center;
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: var(--space-xs);
-    }
-    .cs-gallery__title {
-      text-align: center;
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: clamp(1.3rem, 2.5vw, 1.75rem);
-      color: var(--color-primary);
-      margin-bottom: var(--space-xl);
-    }
-    .cs-gallery__grid {
-      display: flex;
-      gap: var(--space-sm);
-      justify-content: center;
-      align-items: flex-start;
-      padding: var(--space-lg);
-      background: var(--color-gray-50, #f8f9fa);
-      border-radius: var(--radius-xl);
-    }
-    .cs-gallery__grid img {
-      max-height: 520px;
-      width: auto;
-      flex: 1 1 0;
-      min-width: 0;
-      max-width: 24%;
-      border-radius: var(--radius-md);
-      object-fit: contain;
-    }
-
-    /* Reviews image */
-    .cs-reviews-image {
-      width: 100%;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-    }
-    .cs-reviews-image img {
-      width: 100%;
-      display: block;
-      border-radius: var(--radius-xl);
-    }
-
-    /* Responsive: horizontal scroll on small screens */
-    @media (max-width: 768px) {
-      .cs-hero__image--constrained {
-        max-width: 320px;
-      }
-      .cs-gallery__grid {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        gap: var(--space-sm);
-        padding-bottom: var(--space-sm);
-      }
-      .cs-gallery__grid img {
-        flex: 0 0 75%;
-        max-width: 75%;
-        max-height: 400px;
-        scroll-snap-align: center;
-      }
-      .cs-team-spotlight__copy {
-        padding: var(--space-md) var(--space-lg);
-      }
-    }
-  </style>
+  <!-- Marble-specific styles now in shared css/style.css -->
 </head>
 <body>
 
@@ -169,7 +22,7 @@
         <li><a href="/#work">Case Studies</a></li>
         <li><a href="/#experience">Experience</a></li>
         <li><a href="mailto:work@adisundar.com" class="btn btn--primary btn--sm">Get in Touch</a></li>
-        <button class="nav__close" id="navClose">&times;</button>
+        <li class="nav__close-wrapper"><button class="nav__close" id="navClose">&times;</button></li>
       </ul>
       <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
@@ -334,9 +187,9 @@
       </div>
 
       <div class="cs-body__content">
-        <div style="margin-top: var(--space-2xl); text-align: center;">
+        <div class="cs-cta-group">
           <a href="/" class="btn btn--primary btn--lg">← Back to Home</a>
-          <a href="case-study-loftsmart.html" class="btn btn--outline btn--lg" style="margin-left: 1rem;">Next: LoftSmart →</a>
+          <a href="case-study-loftsmart.html" class="btn btn--outline btn--lg">Next: LoftSmart →</a>
         </div>
       </div>
     </div>
