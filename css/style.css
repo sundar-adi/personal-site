@@ -285,6 +285,11 @@ p {
   color: var(--color-gray-600);
 }
 
+.nav--scrolled .nav__links a.btn--primary,
+.nav--scrolled .nav__links a.btn--primary:hover {
+  color: var(--color-white);
+}
+
 .nav__links a:hover {
   color: var(--color-white);
 }
@@ -465,18 +470,19 @@ p {
   gap: 0.6rem;
   padding: 0.6rem 1.2rem;
   flex: 1 1 0;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 100px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(79, 109, 245, 0.15), 0 0 40px rgba(79, 109, 245, 0.05);
   transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
 
 .hero-stat:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 0 16px rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 0 24px rgba(79, 109, 245, 0.25), 0 0 48px rgba(79, 109, 245, 0.08);
 }
 
 .hero-stat__icon {
@@ -645,6 +651,9 @@ p {
   border: 1px solid var(--color-gray-200);
   transition: all var(--transition-base);
   margin-bottom: var(--space-2xl);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .case-study-card:hover {
@@ -703,6 +712,27 @@ p {
   font-size: 1.0625rem;
   color: var(--color-gray-500);
   margin-bottom: var(--space-md);
+}
+
+.case-study-card__milestone {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.case-study-card__milestone--acquired {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.case-study-card__milestone--series {
+  background: rgba(234, 179, 8, 0.1);
+  color: #b45309;
+  border: 1px solid rgba(234, 179, 8, 0.25);
 }
 
 .case-study-card__description {
@@ -806,6 +836,22 @@ p {
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+.timeline__logo {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  display: none;
+}
+
+.timeline__location {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--color-gray-400);
   margin-bottom: 0.5rem;
 }
 
@@ -1015,6 +1061,13 @@ p {
   color: var(--color-white);
 }
 
+.cs-hero__split {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
 .cs-hero__meta {
   display: flex;
   align-items: center;
@@ -1032,6 +1085,28 @@ p {
   border-radius: 100px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.cs-hero__tag--role {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.cs-hero__tag--acquired {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+
+.cs-hero__tag--milestone {
+  background: rgba(234, 179, 8, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(234, 179, 8, 0.3);
+  text-transform: none;
+  letter-spacing: 0.01em;
 }
 
 .cs-hero h1 {
@@ -1058,6 +1133,19 @@ p {
   width: 100%;
 }
 
+.cs-hero__image--side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.cs-hero__image--side img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
 /* Case study metrics bar */
 .cs-metrics {
   padding: var(--space-2xl) 0;
@@ -1065,24 +1153,82 @@ p {
   border-bottom: 1px solid var(--color-gray-200);
 }
 
-.cs-metrics__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-lg);
+.hero-stats--compact {
+  margin-top: var(--space-lg);
+  margin-bottom: 0;
+  max-width: 480px;
+}
+
+.hero-stats--compact .hero-stat {
+  flex: 0 1 auto;
+  padding: 0.5rem 1rem;
+}
+
+.hero-stats--compact .hero-stat__icon {
+  font-size: 1rem;
+  width: 1.2rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.hero-stats--compact .hero-stat__value {
+  font-size: 0.85rem;
+}
+
+.hero-stats--compact .hero-stat__label {
+  font-size: 0.65rem;
+}
+
+/* Press / Featured In */
+.cs-press {
   text-align: center;
 }
 
-.cs-metric__value {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  letter-spacing: -0.02em;
+.cs-press__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-xl);
 }
 
-.cs-metric__label {
+.cs-press__links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.cs-press__link {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.cs-press__link:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.cs-press__logo {
+  height: 20px;
+  width: auto;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cs-press__title {
   font-size: 0.875rem;
-  color: var(--color-gray-500);
-  margin-top: 0.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-align: left;
+  line-height: 1.4;
 }
 
 /* Case study body content */
@@ -1267,14 +1413,18 @@ p {
     min-height: 280px;
   }
 
-  .cs-metrics__grid {
-    grid-template-columns: 1fr 1fr;
+  .hero-stats--compact {
+    margin-top: var(--space-md);
   }
 }
 
 @media (max-width: 768px) {
   .section {
     padding: var(--space-3xl) 0;
+  }
+
+  .cs-hero__split {
+    grid-template-columns: 1fr;
   }
 
   .nav__links {
@@ -1357,10 +1507,6 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .cs-metrics__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-sm);
-  }
 
   .stat__number {
     font-size: 2rem;
