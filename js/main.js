@@ -106,3 +106,32 @@ function highlightNav() {
 }
 
 window.addEventListener('scroll', highlightNav, { passive: true });
+
+// --- Rotating hero words ---
+(function() {
+  const words = document.querySelectorAll('.rotating-word');
+  if (!words.length) return;
+
+  let currentIndex = 0;
+  const interval = 2500; // ms between rotations
+
+  setInterval(() => {
+    const current = words[currentIndex];
+    const nextIndex = (currentIndex + 1) % words.length;
+    const next = words[nextIndex];
+
+    // Slide current word up and out
+    current.classList.remove('active');
+    current.classList.add('exit-up');
+
+    // Slide next word up into view
+    next.classList.add('active');
+
+    // Clean up the exited word after transition
+    setTimeout(() => {
+      current.classList.remove('exit-up');
+    }, 500);
+
+    currentIndex = nextIndex;
+  }, interval);
+})();

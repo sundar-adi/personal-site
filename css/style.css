@@ -293,6 +293,10 @@ p {
   color: var(--color-primary);
 }
 
+.nav__close {
+  display: none;
+}
+
 .nav__toggle {
   display: none;
   background: none;
@@ -368,11 +372,38 @@ p {
   line-height: 1.1;
 }
 
-.hero__title span {
+.rotating-words {
+  display: inline-block;
+  position: relative;
+  vertical-align: bottom;
+  overflow: hidden;
+  /* Width will be set dynamically by JS */
+}
+
+.rotating-word {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
   background: linear-gradient(135deg, var(--color-accent), #818cf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  white-space: nowrap;
+}
+
+.rotating-word.active {
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rotating-word.exit-up {
+  opacity: 0;
+  transform: translateY(-100%);
 }
 
 .hero__description {
@@ -421,8 +452,8 @@ p {
 
 /* --- Hero Stats Bar --- */
 .hero-stats {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 0.625rem;
   margin-bottom: var(--space-xl);
 }
@@ -430,17 +461,22 @@ p {
 .hero-stat {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.6rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1.2rem;
+  flex: 1 1 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 100px;
-  transition: background 0.25s, border-color 0.25s;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
 
 .hero-stat:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.04);
 }
 
 .hero-stat__icon {
@@ -482,14 +518,21 @@ p {
 .hero__image {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero__image img {
   width: 100%;
   max-width: 480px;
   border-radius: var(--radius-xl);
-  margin-left: auto;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+.hero__image .hero__label {
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
 }
 
 /* --- Logo Bar --- */
@@ -1198,7 +1241,7 @@ p {
   }
 
   .hero-stats {
-    justify-content: center;
+    margin-inline: auto;
   }
 
   .hero__image img {
